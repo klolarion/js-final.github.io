@@ -85,14 +85,31 @@ const superEventHandler = {
         h2.innerText = "Window Resized";
     },
     rightClick: function(){
+        const currentColor = h2.style.color;
         h2.innerText = "Right clicked";
-        document.body.style.backgroundColor = "red";
+        let newColor;
+        if(currentColor === "red") {
+            newColor = "blue";
+        }else {
+            newColor = "red";
+        }
+        h2.style.color = newColor;
     }
+}
+
+function handleH2(){
+    h2.classList.toggle("clicked"); //아래 if문 대체함
+    // const clickedClass = "clicked";
+    // if(h2.classList.contains(clickedClass)){
+    //     h2.classList.remove(clickedClass);
+    // }else{
+    //     h2.classList.add(clickedClass);
+    // }
 }
 
 let h2 = document.getElementsByTagName("h2").item(0);
 
-h2.addEventListener("mouseenter", superEventHandler.mouseIn);
+h2.addEventListener("mouseenter", handleH2);
 h2.addEventListener("mouseleave", superEventHandler.mouseLeave);
 window.addEventListener("resize", superEventHandler.resize);
 window.addEventListener("contextmenu", superEventHandler.rightClick);
