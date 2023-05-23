@@ -1,30 +1,32 @@
 
-const loginForm = document.querySelector('#login-form');
-const loginInput = document.querySelector('#login-form input');
-const greeting = document.querySelector('#greeting');
+const gameForm = document.querySelector('#game-form');
+const range = document.querySelector('#game-form .range');
+const my = document.querySelector('#game-form .my');
+const result = document.querySelector('#result');
+const wl = document.querySelector('#wl');
 
 const HIDDEN_CLASSNAME = 'hidden';
-const USERNAME_KEY = 'username';
 
-function onLoginSubmit(event){
+
+function onGameSubmit(event){
     event.preventDefault();
-    loginForm.classList.add(HIDDEN_CLASSNAME);
-    paintGreetings();
+
+    const rangeNum = range.value;
+    const myNum = parseInt(my.value);
+    const random = parseInt(Math.random() * rangeNum + 1);
+
+    result.innerText = `You chose : ${myNum}, the machine chose: ${random}`;
+
+    if(myNum === random){
+        wl.innerText = 'You won!';
+    }else {
+        wl.innerText = 'You lost!';
+    }
+
+    result.classList.remove(HIDDEN_CLASSNAME);
+    wl.classList.remove(HIDDEN_CLASSNAME);
 }
 
-function paintGreetings() {
-    const username = loginInput.value;
-    localStorage.setItem(USERNAME_KEY, username);
-    greeting.classList.remove(HIDDEN_CLASSNAME);
-    greeting.innerText = `Hello ${username}`;
-}
+gameForm.addEventListener('submit', onGameSubmit);
 
 
-const savedUser = localStorage.getItem(USERNAME_KEY);
-
-if (savedUser === null) {
-    loginForm.classList.remove(HIDDEN_CLASSNAME);
-    loginForm.addEventListener('submit', onLoginSubmit);
-}else {
-    paintGreetings();
-}
