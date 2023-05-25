@@ -27,6 +27,6 @@ function onGameSubmit(event){
     wl.classList.remove(HIDDEN_CLASSNAME);
 }
 
-gameForm.addEventListener('submit', onGameSubmit);
+// gameForm.addEventListener('submit', onGameSubmit);
 
 
