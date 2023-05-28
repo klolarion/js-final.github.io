@@ -42,15 +42,12 @@ const quotes = [
         quote: '비관론자는 모든 기회에서 어려움을 찾아내고 낙관론자는 모든 어려움에서 기회를 찾아낸다.',
         author: '윈스턴 처칠',
     },
-
-]
+];
 
 const quote = document.querySelector('#quote span:first-child');
 const author = document.querySelector('#quote span:last-child');
 
 const num = parseInt(Math.random()*quotes.length);
-
-console.log(quotes[num]);
 
 quote.innerText = quotes[num].quote;
 author.innerText = quotes[num].author;

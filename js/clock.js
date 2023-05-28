@@ -1,20 +1,15 @@
-const dday = document.querySelector('#dday');
+const clock = document.querySelector('#clock');
 
 
 function getClock() {
 
     const now = new Date();
-    const xmas = new Date(2023, 11, 25, 0, 0, 0);
 
-    const diff = xmas-now;
+    const hour = String(now.getHours()).padStart(2,'0');
+    const min = String(now.getMinutes()).padStart(2,'0');
+    const sec = String(now.getSeconds()).padStart(2,'0');
 
-
-    const day = Math.floor(diff / (1000*60*60*24));
-    const hour = Math.floor((diff / (1000*60*60)) % 24);
-    const min = Math.floor((diff / (1000*60)) % 60);
-    const sec = Math.floor(diff / 1000 % 60);
-
-    dday.innerText = `${day}d ${hour}h ${min}m ${sec}s`;
+    clock.innerText = `${hour}:${min}:${sec}`;
 }
 
 getClock()
